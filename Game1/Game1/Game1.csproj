@@ -148,7 +148,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Graphics\5848c77c12e987232f99f0cdfec17ece.jpg" />
     <Content Include="Content\Graphics\herring.png" />
     <Content Include="Content\Graphics\muscles.png" />
     <Content Include="Content\Graphics\prawn.png" />
