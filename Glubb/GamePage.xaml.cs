@@ -29,6 +29,7 @@ namespace Glubb
         {
             this.InitializeComponent();
 
+
             if (!Windows.Foundation.Metadata.ApiInformation
                     .IsApiContractPresent("Windows.Phone.PhoneContract", 1))
             {
