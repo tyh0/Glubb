@@ -126,6 +126,12 @@
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScreenManager\GameScreen.cs" />
+    <Compile Include="ScreenManager\InputState.cs" />
+    <Compile Include="ScreenManager\MenuEntry.cs" />
+    <Compile Include="ScreenManager\MenuScreen.cs" />
+    <Compile Include="ScreenManager\PlayerIndexEventArgs.cs" />
+    <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="TheGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +163,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.0.1">
+      <Name>Microsoft Mobile Extension SDK for Universal App Platform</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

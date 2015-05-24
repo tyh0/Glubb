@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Glubb
 {
@@ -14,8 +15,32 @@ namespace Glubb
         public TheGame()
         {
             graphics = new GraphicsDeviceManager(this);
+            {
+                // TODO: implement preferred dimensions
+            };
+
             Content.RootDirectory = "Content";
+
+            // Limit frame rate to 30 fps
+            //TODO: come back to this and make sure it was necessary given our game assets
+            TargetElapsedTime = TimeSpan.FromTicks(333333);
+
+            // If not running on the phone (which it likely won't be), show mouse cursor
+            if (!Windows.Foundation.Metadata.ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1))
+                IsMouseVisible = true;
+            else
+            {
+                graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
+                Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
+            }
+            //TODO: add screen scale
+            //TODO: add screen manager
+            //TODO: add gameplay screen
+            //TODO: add additional screens
+            //TODO: add audio manager
+
         }
+
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -36,10 +61,14 @@ namespace Glubb
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            // TODO: Review this page of Catapult. pg 13
+            //// Create a new SpriteBatch, which can be used to draw textures.
+            //spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            //// TODO: use this.Content to load your game content here
+
+            // TODO: load sounds
+            base.LoadContent();
         }
 
         /// <summary>
