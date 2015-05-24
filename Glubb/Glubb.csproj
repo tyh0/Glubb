@@ -126,9 +126,17 @@
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="ScreenManager\GameplayScreen.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
     <Compile Include="ScreenManager\InputState.cs" />
+=======
+    <Compile Include="ScreenManager\GameScreen.cs" />
+    <Compile Include="ScreenManager\InputState.cs" />
+    <Compile Include="ScreenManager\MenuEntry.cs" />
+    <Compile Include="ScreenManager\MenuScreen.cs" />
+    <Compile Include="ScreenManager\PlayerIndexEventArgs.cs" />
+>>>>>>> origin/master
     <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="TheGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,7 +175,10 @@
       <Name>Microsoft Mobile Extension SDK for Universal App Platform</Name>
     </SDKReference>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup />
+=======
+>>>>>>> origin/master
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
