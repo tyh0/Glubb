@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace Game1
 {
 
@@ -8,6 +9,11 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        KeyboardState currentKeyboardState;
+        KeyboardState previousKeyboardState;
+        GamePadState currentGamePadState;
+        GamePadState previousGamePadState;
+        
 
         Player player = new Player();
         Herring herring = new Herring();
@@ -49,12 +55,41 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            player.Update();
+            // call UpdatePlayer instead of player.Update() because player needs to take
+            // user input, which were defined as fields in this class
+            UpdatePlayer();
             herring.Update();
             salmon.Update();
             orca.Update();
 
             base.Update(gameTime);
+        }
+
+        /// <summary>
+        /// This is called to update the player's position.
+        /// </summary>
+        protected void UpdatePlayer()
+        {
+            player.x += currentGamePadState.ThumbSticks.Left.X * player.playerMoveSpeed;
+            player.y -= currentGamePadState.ThumbSticks.Left.Y * player.playerMoveSpeed;
+            if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed)
+            {
+                player.x -= player.playerMoveSpeed;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Right) || currentGamePadState.DPad.Right == ButtonState.Pressed)
+            {
+                player.x += player.playerMoveSpeed;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Up) || currentGamePadState.DPad.Up == ButtonState.Pressed)
+
+            {
+                player.y -= player.playerMoveSpeed;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed)
+
+            {
+                player.y += player.playerMoveSpeed;
+            }
         }
 
         /// <summary>

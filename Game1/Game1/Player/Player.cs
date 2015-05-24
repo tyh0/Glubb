@@ -8,12 +8,19 @@ namespace Game1
 
     class Player
 
+        
+
     {
+        int playerMoveSpeed;
+        int x;
+        int y;
 
         public void Initialize(Texture2D texture)
 
         {
-
+            playerMoveSpeed = 10;
+            x = 0;
+            y = 0;
         }
 
 
@@ -21,6 +28,7 @@ namespace Game1
         public void Update()
 
         {
+
 
         }
 
