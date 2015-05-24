@@ -13,12 +13,15 @@ namespace Game1
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;   
 
-        Texture2D herringImage;
+        // Texture2D herringImage;
 
         Player player = new Player();
         Herring herring = new Herring();
         Orca orca = new Orca();
         Salmon salmon = new Salmon();
+
+        Herring[] herrings = new Herring[Herring.getMaxAmount()];
+        int sizeOfHerring = 0;
 
         public Game1()
         {
@@ -29,10 +32,12 @@ namespace Game1
         protected override void Initialize()
         {
             
-            player.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
+            player.Initialize(Content.Load<Texture2D>("Graphics\\salmon.png"));
             herring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
             orca.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
             salmon.Initialize(Content.Load<Texture2D>("Graphics\\salmon.png"));
+            herrings[sizeOfHerring] = herring;
+            sizeOfHerring++;
             base.Initialize();
         }
 
@@ -58,7 +63,23 @@ namespace Game1
             // call UpdatePlayer instead of player.Update() because player needs to take
             // user input, which were defined as fields in this class
             UpdatePlayer();
-            herring.Update();
+            for (int i = 0; i < sizeOfHerring; i++)
+            {
+                if (sizeOfHerring < 10)
+                {
+                    Herring newHerring = new Herring();
+                    newHerring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
+                    herrings[sizeOfHerring] = newHerring;
+                    // sizeOfHerring++;
+                }
+                herrings[i].Update();
+                if ((herrings[i].getX() > GraphicsDevice.Viewport.Width) ||
+                    (herrings[i].getY() > GraphicsDevice.Viewport.Height))
+                {
+                    herrings[i] = null;
+                    sizeOfHerring--;
+                }
+            }
             salmon.Update();
             orca.Update();
 
