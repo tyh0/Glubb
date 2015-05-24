@@ -10,6 +10,9 @@ namespace Game1
 
     {
 
+        int MAXAMOUNT = 2;
+        
+
         public void Initialize()
 
         {

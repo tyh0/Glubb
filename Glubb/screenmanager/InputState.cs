@@ -1,17 +1,12 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// InputState.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
-#region Using Statements
+﻿#region Using Statements
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 #endregion
 
 namespace GameStateManagement
@@ -19,12 +14,15 @@ namespace GameStateManagement
     /// <summary>
     /// an enum of all available mouse buttons.
     /// </summary>
-    public enum MouseButtons
-    {
-        LeftButton,
-        MiddleButton,
-        RightButton
-    }
+
+
+
+    //public enum MouseButtons
+    //{
+    //    LeftButton,
+    //    MiddleButton,
+    //    RightButton
+    //}
 
     /// <summary>
     /// Helper for reading input from keyboard, gamepad, and touch input. This class 
@@ -136,13 +134,13 @@ namespace GameStateManagement
         /// </summary>
         public bool IsNewGamePadButtonPress(Buttons button, out PlayerIndex playerIndex)
         {
-           
-                // Read input from the specified player.
-                playerIndex = PlayerIndex.One;
 
-                return (CurrentGamePadState.IsButtonDown(button) &&
-                        LastGamePadState.IsButtonUp(button));
-            
+            // Read input from the specified player.
+            playerIndex = PlayerIndex.One;
+
+            return (CurrentGamePadState.IsButtonDown(button) &&
+                    LastGamePadState.IsButtonUp(button));
+
         }
 
         /// <summary>
@@ -151,31 +149,33 @@ namespace GameStateManagement
         /// If this is null, it will accept input from any player. When a button press
         /// is detected, the output playerIndex reports which player pressed it.
         /// </summary>
-        public bool IsNewMouseButtonPress(MouseButtons button, out PlayerIndex playerIndex)
-        {
 
-            // Read input from the specified player.
-            playerIndex = PlayerIndex.One;
 
-            switch(button)
-            {
-                case MouseButtons.LeftButton:
-                    return (
-                        LastMouseState.LeftButton == ButtonState.Released &&
-                        CurrentMouseState.LeftButton == ButtonState.Pressed);
-                case MouseButtons.MiddleButton:
-                    return (
-                        LastMouseState.MiddleButton == ButtonState.Released &&
-                        CurrentMouseState.MiddleButton == ButtonState.Pressed);
-                case MouseButtons.RightButton:
-                    return (
-                        LastMouseState.RightButton == ButtonState.Released &&
-                        CurrentMouseState.RightButton == ButtonState.Pressed);
-                default:
-                    return false;
-            }
+        //public bool IsNewMouseButtonPress(MouseButtons button, out PlayerIndex playerIndex)
+        //{
 
-        }
+        //    // Read input from the specified player.
+        //    playerIndex = PlayerIndex.One;
+
+        //    switch (button)
+        //    {
+        //        case MouseButtons.LeftButton:
+        //            return (
+        //                LastMouseState.LeftButton == ButtonState.Released &&
+        //                CurrentMouseState.LeftButton == ButtonState.Pressed);
+        //        case MouseButtons.MiddleButton:
+        //            return (
+        //                LastMouseState.MiddleButton == ButtonState.Released &&
+        //                CurrentMouseState.MiddleButton == ButtonState.Pressed);
+        //        case MouseButtons.RightButton:
+        //            return (
+        //                LastMouseState.RightButton == ButtonState.Released &&
+        //                CurrentMouseState.RightButton == ButtonState.Pressed);
+        //        default:
+        //            return false;
+        //    }
+
+        //}
 
 
         /// <summary>
@@ -184,13 +184,13 @@ namespace GameStateManagement
         /// If this is null, it will accept input from any player. When the action
         /// is detected, the output playerIndex reports which player pressed it.
         /// </summary>
-        public bool IsMenuSelect(out PlayerIndex playerIndex)
-        {
-            return IsNewKeyPress(Keys.Space, out playerIndex) ||
-                   IsNewKeyPress(Keys.Enter, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.A, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.Start, out playerIndex);
-        }
+        //public bool IsMenuSelect(out PlayerIndex playerIndex)
+        //{
+        //    return IsNewKeyPress(Keys.Space, out playerIndex) ||
+        //           IsNewKeyPress(Keys.Enter, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.A, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.Start, out playerIndex);
+        //}
 
 
         /// <summary>
@@ -199,12 +199,12 @@ namespace GameStateManagement
         /// If this is null, it will accept input from any player. When the action
         /// is detected, the output playerIndex reports which player pressed it.
         /// </summary>
-        public bool IsMenuCancel(out PlayerIndex playerIndex)
-        {
-            return IsNewKeyPress(Keys.Escape, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.B, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.Back, out playerIndex);
-        }
+        //public bool IsMenuCancel(out PlayerIndex playerIndex)
+        //{
+        //    return IsNewKeyPress(Keys.Escape, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.B, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.Back, out playerIndex);
+        //}
 
 
         /// <summary>
@@ -212,29 +212,29 @@ namespace GameStateManagement
         /// The controllingPlayer parameter specifies which player to read
         /// input for. If this is null, it will accept input from any player.
         /// </summary>
-        public bool IsMenuUp()
-        {
-            PlayerIndex playerIndex;
+        //public bool IsMenuUp()
+        //{
+        //    PlayerIndex playerIndex;
 
-            return IsNewKeyPress(Keys.Up, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.DPadUp, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.LeftThumbstickUp, out playerIndex);
-        }
+        //    return IsNewKeyPress(Keys.Up, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.DPadUp, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.LeftThumbstickUp, out playerIndex);
+        //}
 
 
-        /// <summary>
-        /// Checks for a "menu down" input action.
-        /// The controllingPlayer parameter specifies which player to read
-        /// input for. If this is null, it will accept input from any player.
-        /// </summary>
-        public bool IsMenuDown()
-        {
-            PlayerIndex playerIndex;
+        ///// <summary>
+        ///// Checks for a "menu down" input action.
+        ///// The controllingPlayer parameter specifies which player to read
+        ///// input for. If this is null, it will accept input from any player.
+        ///// </summary>
+        //public bool IsMenuDown()
+        //{
+        //    PlayerIndex playerIndex;
 
-            return IsNewKeyPress(Keys.Down, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.DPadDown, out playerIndex) ||
-                   IsNewGamePadButtonPress(Buttons.LeftThumbstickDown, out playerIndex);
-        }
+        //    return IsNewKeyPress(Keys.Down, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.DPadDown, out playerIndex) ||
+        //           IsNewGamePadButtonPress(Buttons.LeftThumbstickDown, out playerIndex);
+        //}
 
 
         /// <summary>
@@ -255,3 +255,4 @@ namespace GameStateManagement
         #endregion
     }
 }
+

@@ -1,13 +1,4 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// ScreenManager.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
-#region Using Statements
+﻿#region Using Statements
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -16,7 +7,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.IO;
-using CatapultGame;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 #endregion
 
 namespace GameStateManagement
@@ -38,7 +31,7 @@ namespace GameStateManagement
 
         SpriteBatch spriteBatch;
         SpriteFont font;
-        Texture2D blankTexture;
+        Texture2D background;
 
         GraphicsDeviceManager graphicsDeviceManager;
 
@@ -85,8 +78,6 @@ namespace GameStateManagement
         //public UniversalWindowScalingHelper ScalingHelper { get; private set; }
         //public UniversalWindowScalingCamera2D Camera { get; private set; }
 
-        //public RenderTargetScaler Scaler { get; private set; }
-
         #endregion
 
         #region Initialization
@@ -102,6 +93,8 @@ namespace GameStateManagement
             // we don't assume the game wants to read them.
             TouchPanel.EnabledGestures = GestureType.None;
             this.graphicsDeviceManager = graphicsDeviceManager;
+
+            //ScalingHelper = new UniversalWindowScalingHelper(game, null, null, null, null);
         }
 
 
@@ -126,10 +119,17 @@ namespace GameStateManagement
             ContentManager content = Game.Content;
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            font = content.Load<SpriteFont>("Fonts/MenuFont");
-            blankTexture = content.Load<Texture2D>("Textures/Backgrounds/blank");
+            background = content.Load<Texture2D>("Textures/Backgrounds/blank");
 
-            // Scaler = new RenderTargetScaler(this.Game, graphicsDeviceManager, graphicsDeviceManager.PreferredBackBufferWidth, graphicsDeviceManager.PreferredBackBufferHeight);
+            // TODO: Initialize scaler
+
+            //Camera = new UniversalWindowScalingCamera2D(ScalingHelper);
+            //Camera.Zoom = 1f;
+            //Camera.Position = new Vector2(ScalingHelper.VirtualWidth / 2, ScalingHelper.VirtualHeight / 2);
+
+
+            //InitializeScalingHelper(Game.Window.ClientBounds.Width,
+            //                        Game.Window.ClientBounds.Height);
 
             // Tell each of the screens to load their content.
             foreach (GameScreen screen in screens)
@@ -212,6 +212,17 @@ namespace GameStateManagement
                 TraceScreens();
         }
 
+        //public void InitializeScalingHelper(int realScreenWidth, int realScreenHeight)
+        //{
+        //    //ScalingHelper.VirtualWidth = 1366;
+        //    //ScalingHelper.VirtualHeight = 768;
+        //    ScalingHelper.ScreenWidth = realScreenWidth;
+        //    ScalingHelper.ScreenHeight = realScreenHeight;
+        //    ScalingHelper.Initialize();
+
+        //    Camera.RecalculateTransformationMatrices();
+        //}
+
         /// <summary>
         /// Prints a list of all the screens, for debugging.
         /// </summary>
@@ -231,7 +242,7 @@ namespace GameStateManagement
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
-            // Scaler.SetRenderTarget();
+            // TODO: set render target
 
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -243,7 +254,8 @@ namespace GameStateManagement
                 screen.Draw(gameTime);
             }
 
-            //Scaler.Draw();
+            // TODO: Use scaler draw
+
             base.Draw(gameTime);
 
         }
@@ -323,7 +335,7 @@ namespace GameStateManagement
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(blankTexture,
+            spriteBatch.Draw(background,
                              new Rectangle(0, 0, viewport.Width, viewport.Height),
                              Color.Black * alpha);
 
