@@ -72,25 +72,25 @@ namespace Game1
         /// </summary>
         protected void UpdatePlayer()
         {
-            player.x += currentGamePadState.ThumbSticks.Left.X * player.playerMoveSpeed;
-            player.y -= currentGamePadState.ThumbSticks.Left.Y * player.playerMoveSpeed;
+            player.setX(player.getX() + currentGamePadState.ThumbSticks.Left.X * player.getPlayerMoveSpeed());
+            player.setY(player.getY() - currentGamePadState.ThumbSticks.Left.Y * player.getPlayerMoveSpeed());
             if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed)
             {
-                player.x -= player.playerMoveSpeed;
+                player.setX(player.getX() - player.getPlayerMoveSpeed());
             }
             if (currentKeyboardState.IsKeyDown(Keys.Right) || currentGamePadState.DPad.Right == ButtonState.Pressed)
             {
-                player.x += player.playerMoveSpeed;
+                player.setX(player.getX() + player.getPlayerMoveSpeed());
             }
             if (currentKeyboardState.IsKeyDown(Keys.Up) || currentGamePadState.DPad.Up == ButtonState.Pressed)
 
             {
-                player.y -= player.playerMoveSpeed;
+                player.setY(player.getY() - player.getPlayerMoveSpeed());
             }
             if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed)
 
             {
-                player.y += player.playerMoveSpeed;
+                player.setY(player.getY() + player.getPlayerMoveSpeed());
             }
         }
 

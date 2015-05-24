@@ -11,9 +11,9 @@ namespace Game1
         
 
     {
-        int playerMoveSpeed;
-        int x;
-        int y;
+        private int playerMoveSpeed;
+        private int x;
+        private int y;
 
         public void Initialize(Texture2D texture)
 
@@ -39,6 +39,12 @@ namespace Game1
         {
 
         }
+
+        public int getX() { return x; }
+        public int getY() { return y; }
+        public int getPlayerMoveSpeed() { return playerMoveSpeed; }
+        public void setX(int x) { this.x = x; }
+        public void setY(int y) { this.y = y; }
 
     }
 
