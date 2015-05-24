@@ -9,6 +9,8 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D herringImage;
+
         Player player = new Player();
         Herring herring = new Herring();
         Orca orca = new Orca();
@@ -23,10 +25,10 @@ namespace Game1
         protected override void Initialize()
         {
             
-            player.Initialize();
-            herring.Initialize();
-            orca.Initialize();
-            salmon.Initialize();
+            player.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
+            herring.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
+            orca.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
+            salmon.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
             base.Initialize();
         }
 
@@ -63,11 +65,13 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            player.Draw();
-            herring.Draw();
-            salmon.Draw();
-            orca.Draw();
+            player.Draw(spriteBatch);
+            herring.Draw(spriteBatch);
+            salmon.Draw(spriteBatch);
+            orca.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
