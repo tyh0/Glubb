@@ -8,7 +8,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>bd5de066-8a70-4f6e-89df-5d15f2a4312b</PackageIdentityName>
     <IntermediateOutputPath>c:\users\ivanc_000\documents\visual studio 2015\Projects\Glubb\Glubb\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>66FFE70794C1C05BBDD5F890BD261A0359076DAA9D3557F0D225EF3956445352</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>C5EFF7CD6E99B68BD3E306F5574BF8BFCBA599FA4C9ABA821EDC051DEDDED423</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>bd5de066-8a70-4f6e-89df-5d15f2a4312b_1.0.0.0_x86__sjxxtzvynvd86</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>bd5de066-8a70-4f6e-89df-5d15f2a4312b_sjxxtzvynvd86!App</RegisteredUserModeAppID>
     <RegisteredPackageID>bd5de066-8a70-4f6e-89df-5d15f2a4312b</RegisteredPackageID>
@@ -20,7 +20,7 @@
     <AppXManifest Include="c:\users\ivanc_000\documents\visual studio 2015\Projects\Glubb\Glubb\bin\WindowsUAP\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-05-24T00:56:41.528</Modified>
+      <Modified>2015-05-24T02:11:10.980</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +62,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="c:\users\ivanc_000\documents\visual studio 2015\Projects\Glubb\Glubb\bin\WindowsUAP\x86\Debug\Core\Glubb.exe">
       <PackagePath>Glubb.exe</PackagePath>
-      <Modified>2015-05-24T00:55:36.293</Modified>
+      <Modified>2015-05-24T02:11:10.080</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="c:\users\ivanc_000\documents\visual studio 2015\Projects\Glubb\Glubb\bin\WindowsUAP\x86\Debug\Core\Glubb.xr.xml">
       <PackagePath>Glubb.xr.xml</PackagePath>
@@ -114,7 +114,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="c:\users\ivanc_000\documents\visual studio 2015\Projects\Glubb\Glubb\bin\WindowsUAP\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-05-24T00:56:42.002</Modified>
+      <Modified>2015-05-24T02:11:11.578</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="c:\users\ivanc_000\documents\visual studio 2015\Projects\Glubb\Glubb\bin\WindowsUAP\x86\Debug\Core\SharpDX.Direct2D1.dll">
       <PackagePath>SharpDX.Direct2D1.dll</PackagePath>

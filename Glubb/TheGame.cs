@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using GameStateManagement;
 
 namespace Glubb
 {
@@ -11,6 +12,7 @@ namespace Glubb
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        ScreenManager screenManager;
 
         public TheGame()
         {
@@ -36,7 +38,10 @@ namespace Glubb
             }
 
             // TODO: Add screen scale
-            // TODO: Add screen manager
+
+            screenManager = new ScreenManager(this, graphics);
+            Components.Add(screenManager);
+
             // TODO: Add gameplay screen
             // TODO: Add additional screens
             // TODO: Add audio manager
