@@ -6,12 +6,12 @@ namespace Glubb
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class TheGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public TheGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
