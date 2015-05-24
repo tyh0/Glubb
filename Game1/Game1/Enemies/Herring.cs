@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 
@@ -10,11 +11,12 @@ namespace Game1
 
     {
         int MAXAMOUNT = 10;
+        Texture2D herringPic;
 
         public void Initialize(Texture2D texture)
 
         {
-
+            herringPic = texture;
         }
 
 
@@ -30,7 +32,8 @@ namespace Game1
         public void Draw(SpriteBatch spriteBatch)
 
         {
-
+            Vector2 v = new Vector2(0, 0);
+            spriteBatch.Draw(herringPic, v , null, Color.White, 0f, v, 1f, SpriteEffects.None, 0f);
         }
 
     }
