@@ -29,10 +29,10 @@ namespace Game1
         protected override void Initialize()
         {
             
-            player.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
-            herring.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
-            orca.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
-            salmon.Initialize(Content.Load<Texture2D>("Graphics\\Herring.jpg"));
+            player.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
+            herring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
+            orca.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
+            salmon.Initialize(Content.Load<Texture2D>("Graphics\\salmon.png"));
             base.Initialize();
         }
 

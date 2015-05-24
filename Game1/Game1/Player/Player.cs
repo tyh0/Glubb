@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 
@@ -16,6 +17,8 @@ namespace Game1
         private int y;
         private int width;
         private int height;
+        private Vector2 coords;
+        private Texture2D texture;
 
         public void Initialize(Texture2D texture)
 
@@ -25,6 +28,8 @@ namespace Game1
             y = 0;
             width = texture.Width;
             height = texture.Height;
+            coords = new Vector2();
+            this.texture = texture;
         }
 
 
@@ -41,7 +46,9 @@ namespace Game1
         public void Draw(SpriteBatch spriteBatch)
 
         {
-
+            coords.X = x;
+            coords.Y = y;
+            spriteBatch.Draw(texture, coords, Color.White);
         }
 
         public int getX() { return x; }
