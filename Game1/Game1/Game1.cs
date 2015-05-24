@@ -62,6 +62,9 @@ namespace Game1
             salmon.Update();
             orca.Update();
 
+            previousKeyboardState = currentKeyboardState;
+            currentKeyboardState = Keyboard.GetState();
+
             base.Update(gameTime);
         }
 
@@ -88,6 +91,8 @@ namespace Game1
             {
                 player.setY(player.getY() + player.getPlayerMoveSpeed());
             }
+            player.setX(MathHelper.Clamp(player.getX(), 0, GraphicsDevice.Viewport.Width - player.getWidth()));
+            player.setY(MathHelper.Clamp(player.getY(), 0, GraphicsDevice.Viewport.Height - player.getHeight()));
         }
 
         /// <summary>
