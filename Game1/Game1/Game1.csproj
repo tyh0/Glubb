@@ -123,6 +123,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BOIDS\Boid.cs" />
+    <Compile Include="BOIDS\Ecosystem.cs" />
+    <Compile Include="BOIDS\Swarm.cs" />
     <Compile Include="Enemies\Herring.cs" />
     <Compile Include="Enemies\Orca.cs" />
     <Compile Include="Enemies\Salmon.cs" />
