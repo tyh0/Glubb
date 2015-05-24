@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System.Collections.Generic;
 
 namespace Game1
 {
@@ -20,8 +20,9 @@ namespace Game1
         Orca orca = new Orca();
         Salmon salmon = new Salmon();
 
-        Herring[] herrings = new Herring[Herring.getMaxAmount()];
-        int sizeOfHerring = 0;
+        // Herring[] herrings = new Herring[Herring.getMaxAmount()];
+        List<Herring> herrings = new List<Herring>(Herring.getMaxAmount());
+        // int sizeOfHerring = 0;
         int herringCounter = 101;
 
         public Game1()
@@ -37,8 +38,8 @@ namespace Game1
             herring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
             orca.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
             salmon.Initialize(Content.Load<Texture2D>("Graphics\\salmon.png"));
-            herrings[sizeOfHerring] = herring;
-            sizeOfHerring++;
+            herrings.Add(herring);
+            // sizeOfHerring++;
             base.Initialize();
         }
 
@@ -64,20 +65,19 @@ namespace Game1
             // call UpdatePlayer instead of player.Update() because player needs to take
             // user input, which were defined as fields in this class
             UpdatePlayer();
-            if ((sizeOfHerring < 10) && (herringCounter % 100 == 0))
+            if ((herrings.Count < 10) && (herringCounter % 100 == 0))
             {
                 Herring newHerring = new Herring();
                 newHerring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
-                herrings[sizeOfHerring] = newHerring;
-                sizeOfHerring++;
+                herrings.Add(newHerring);
             }
-            for (int i = 0; i < sizeOfHerring; i++)
+            for (int i = 0; i < herrings.Count; i++)
             {
                 herrings[i].Update();
                 if ((herrings[i].getX() > GraphicsDevice.Viewport.Width) ||
                     (herrings[i].getY() > GraphicsDevice.Viewport.Height))
                 {
-                    sizeOfHerring--;
+                    herrings.Remove(herrings[i]);
                 }
             }
             herringCounter++;
@@ -128,7 +128,7 @@ namespace Game1
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             player.Draw(spriteBatch);
-            for (int i = 0; i < sizeOfHerring; i++)
+            for (int i = 0; i < herrings.Count; i++)
             {
                 herrings[i].Draw(spriteBatch);
             }
