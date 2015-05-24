@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Glubb
 {
@@ -13,9 +14,35 @@ namespace Glubb
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this)
+            {
+                // TODO: Implement preferred dimensions
+            };
+
             Content.RootDirectory = "Content";
+
+            // Limit frame rate to 30 fps.
+            TargetElapsedTime = TimeSpan.FromTicks(333333);
+
+            //If not running on the phone, show mouse cursor
+            if (!Windows.Foundation.Metadata.ApiInformation
+                   .IsApiContractPresent("Windows.Phone.PhoneContract", 1))
+                IsMouseVisible = true;
+            else
+            {
+                graphics.SupportedOrientations =
+                 DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
+                Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
+            }
+
+            // TODO: Add screen scale
+            // TODO: Add screen manager
+            // TODO: Add gameplay screen
+            // TODO: Add additional screens
+            // TODO: Add audio manager
         }
+
+
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -40,6 +67,7 @@ namespace Glubb
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            base.LoadContent();
         }
 
         /// <summary>
