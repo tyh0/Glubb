@@ -22,6 +22,7 @@ namespace Game1
 
         Herring[] herrings = new Herring[Herring.getMaxAmount()];
         int sizeOfHerring = 0;
+        int herringCounter = 101;
 
         public Game1()
         {
@@ -63,23 +64,23 @@ namespace Game1
             // call UpdatePlayer instead of player.Update() because player needs to take
             // user input, which were defined as fields in this class
             UpdatePlayer();
+            if ((sizeOfHerring < 10) && (herringCounter % 100 == 0))
+            {
+                Herring newHerring = new Herring();
+                newHerring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
+                herrings[sizeOfHerring] = newHerring;
+                sizeOfHerring++;
+            }
             for (int i = 0; i < sizeOfHerring; i++)
             {
-                if (sizeOfHerring < 10)
-                {
-                    Herring newHerring = new Herring();
-                    newHerring.Initialize(Content.Load<Texture2D>("Graphics\\herring.png"));
-                    herrings[sizeOfHerring] = newHerring;
-                    // sizeOfHerring++;
-                }
                 herrings[i].Update();
                 if ((herrings[i].getX() > GraphicsDevice.Viewport.Width) ||
                     (herrings[i].getY() > GraphicsDevice.Viewport.Height))
                 {
-                    herrings[i] = null;
                     sizeOfHerring--;
                 }
             }
+            herringCounter++;
             salmon.Update();
             orca.Update();
 
@@ -127,7 +128,10 @@ namespace Game1
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             player.Draw(spriteBatch);
-            herring.Draw(spriteBatch);
+            for (int i = 0; i < sizeOfHerring; i++)
+            {
+                herrings[i].Draw(spriteBatch);
+            }
             salmon.Draw(spriteBatch);
             orca.Draw(spriteBatch);
             spriteBatch.End();
