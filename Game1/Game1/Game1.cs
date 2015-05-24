@@ -97,10 +97,12 @@ namespace Game1
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
                 player.setX(player.getX() - player.getPlayerMoveSpeed());
+                player.setLeft(true);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
                 player.setX(player.getX() + player.getPlayerMoveSpeed());
+                player.setLeft(false);
             }
             if (currentKeyboardState.IsKeyDown(Keys.Up))
 
@@ -112,8 +114,8 @@ namespace Game1
             {
                 player.setY(player.getY() + player.getPlayerMoveSpeed());
             }
-            player.setX(MathHelper.Clamp(player.getX(), 0, GraphicsDevice.Viewport.Width - player.getWidth()));
-            player.setY(MathHelper.Clamp(player.getY(), 0, GraphicsDevice.Viewport.Height - player.getHeight()));
+            player.setX(MathHelper.Clamp(player.getX(), 0, GraphicsDevice.Viewport.Width - player.getWidth()/4));
+            player.setY(MathHelper.Clamp(player.getY(), 0, GraphicsDevice.Viewport.Height - player.getHeight()/4));
         }
 
         /// <summary>
