@@ -10,7 +10,7 @@ namespace Game1
 
     {
 
-        public void Initialize()
+        public void Initialize(Texture2D texture)
 
         {
 
@@ -26,7 +26,7 @@ namespace Game1
 
 
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
 
         {
 

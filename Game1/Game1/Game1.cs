@@ -10,6 +10,9 @@ namespace Game1
         SpriteBatch spriteBatch;
 
         Player player = new Player();
+        Herring herring = new Herring();
+        Orca orca = new Orca();
+        Salmon salmon = new Salmon();
 
         public Game1()
         {
@@ -21,6 +24,9 @@ namespace Game1
         {
             
             player.Initialize();
+            herring.Initialize();
+            orca.Initialize();
+            salmon.Initialize();
             base.Initialize();
         }
 
@@ -44,6 +50,9 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
             player.Update();
+            herring.Update();
+            salmon.Update();
+            orca.Update();
 
             base.Update(gameTime);
         }
@@ -56,6 +65,9 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             player.Draw();
+            herring.Draw();
+            salmon.Draw();
+            orca.Draw();
             base.Draw(gameTime);
         }
     }
