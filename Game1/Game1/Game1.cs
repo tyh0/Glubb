@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace Game1
@@ -10,10 +11,7 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         KeyboardState currentKeyboardState;
-        KeyboardState previousKeyboardState;
-        GamePadState currentGamePadState;
-        GamePadState previousGamePadState;
-        
+        KeyboardState previousKeyboardState;   
 
         Texture2D herringImage;
 
@@ -72,22 +70,20 @@ namespace Game1
         /// </summary>
         protected void UpdatePlayer()
         {
-            player.setX(player.getX() + currentGamePadState.ThumbSticks.Left.X * player.getPlayerMoveSpeed());
-            player.setY(player.getY() - currentGamePadState.ThumbSticks.Left.Y * player.getPlayerMoveSpeed());
-            if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
                 player.setX(player.getX() - player.getPlayerMoveSpeed());
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Right) || currentGamePadState.DPad.Right == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
                 player.setX(player.getX() + player.getPlayerMoveSpeed());
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Up) || currentGamePadState.DPad.Up == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Up))
 
             {
                 player.setY(player.getY() - player.getPlayerMoveSpeed());
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Down))
 
             {
                 player.setY(player.getY() + player.getPlayerMoveSpeed());
