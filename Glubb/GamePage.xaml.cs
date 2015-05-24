@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MonoGame.Framework;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -28,9 +29,18 @@ namespace Glubb
         {
             this.InitializeComponent();
 
-			// Create the game.
-			var launchArguments = string.Empty;
-            _game = MonoGame.Framework.XamlGame<TheGame>.Create(launchArguments, Window.Current.CoreWindow, swapChainPanel);
+
+            if (!Windows.Foundation.Metadata.ApiInformation
+                    .IsApiContractPresent("Windows.Phone.PhoneContract", 1))
+            {
+                Windows.UI.ViewManagement.ApplicationView.GetForCurrentView()
+                    .TryResizeView(new Size(800, 480));
+            }
+
+            var launchArguments = string.Empty;
+            _game = XamlGame<TheGame>
+                       .Create(launchArguments, Window.Current.CoreWindow,
+                               swapChainPanel);
         }
     }
 }

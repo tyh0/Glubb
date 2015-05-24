@@ -14,12 +14,15 @@ namespace Glubb
 
         public TheGame()
         {
-            graphics = new GraphicsDeviceManager(this);
+
+            graphics = new GraphicsDeviceManager(this)
             {
-                // TODO: implement preferred dimensions
+                // TODO: Implement preferred dimensions
+
             };
 
             Content.RootDirectory = "Content";
+
 
             // Limit frame rate to 30 fps
             //TODO: come back to this and make sure it was necessary given our game assets
@@ -40,7 +43,6 @@ namespace Glubb
             //TODO: add audio manager
 
         }
-
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -68,6 +70,9 @@ namespace Glubb
             //// TODO: use this.Content to load your game content here
 
             // TODO: load sounds
+
+            // TODO: use this.Content to load your game content here
+
             base.LoadContent();
         }
 
